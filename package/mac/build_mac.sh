@@ -34,10 +34,10 @@ build_for_arch() {
 
     if [ "$TARGET_ARCH" == "arm64" ]; then
         echo "[1/5] Tải bộ cài ONLYOFFICE gốc cho Apple Silicon (ARM64)..."
-        DOWNLOAD_URL="https://download.onlyoffice.com/install/desktop/editors/mac/ONLYOFFICE-arm.dmg"
+        DOWNLOAD_URL="https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/ONLYOFFICE-arm.dmg"
     else
         echo "[1/5] Tải bộ cài ONLYOFFICE gốc cho Mac Intel (x86_64)..."
-        DOWNLOAD_URL="https://download.onlyoffice.com/install/desktop/editors/mac/ONLYOFFICE-x86_64.dmg"
+        DOWNLOAD_URL="https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/ONLYOFFICE-x86_64.dmg"
     fi
 
     if [ ! -f "$DMG_PATH" ]; then
