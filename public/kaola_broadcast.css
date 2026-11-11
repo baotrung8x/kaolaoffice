@@ -1,0 +1,220 @@
+/* Kaola Office - Top Bar Customer Announcement Ticker (Dòng thông báo chạy chữ) */
+/* Thiết kế tinh gọn, thanh thoát, chạy chữ ngang liên tục, không phải quảng cáo */
+
+.kaola-top-broadcast {
+  position: fixed;
+  top: 0px;
+  left: 170px;
+  right: 145px;
+  height: 28px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Roboto', var(--font-family-base-custom, var(--font-family-base)), -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.kaola-top-broadcast.hidden {
+  display: none !important;
+}
+
+/* Thanh thông báo chính: hòa vào thanh tiêu đề, hỗ trợ hover pause */
+.kaola-broadcast-bar {
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kaola-broadcast-bar:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Thích ứng Dark theme */
+body.theme-type-dark .kaola-broadcast-bar,
+.theme-type-dark .kaola-broadcast-bar,
+.theme-night .kaola-broadcast-bar,
+.theme-dark .kaola-broadcast-bar {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-type-dark .kaola-broadcast-bar:hover,
+.theme-type-dark .kaola-broadcast-bar:hover,
+.theme-night .kaola-broadcast-bar:hover,
+.theme-dark .kaola-broadcast-bar:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Nhãn biểu tượng cố định bên trái dòng tin */
+.kaola-broadcast-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px 0 6px;
+  height: 100%;
+  flex-shrink: 0;
+  z-index: 3;
+  background: inherit;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.theme-type-dark .kaola-broadcast-label,
+.theme-type-dark .kaola-broadcast-label,
+.theme-night .kaola-broadcast-label,
+.theme-dark .kaola-broadcast-label {
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+.kaola-broadcast-icon {
+  font-size: 11px;
+  line-height: 1;
+  display: inline-block;
+  animation: kaola-broadcast-subtle-pulse 3s infinite ease-in-out;
+}
+
+@keyframes kaola-broadcast-subtle-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+.kaola-broadcast-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #0284c7;
+  white-space: nowrap;
+}
+
+body.theme-type-dark .kaola-broadcast-tag,
+.theme-type-dark .kaola-broadcast-tag,
+.theme-night .kaola-broadcast-tag,
+.theme-dark .kaola-broadcast-tag {
+  color: #38bdf8;
+}
+
+/* Vùng hiển thị chữ chạy ngang (Viewport) */
+.kaola-broadcast-viewport {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 14px, black calc(100% - 14px), transparent 100%);
+}
+
+/* Dải chữ chạy (Track) */
+.kaola-broadcast-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: kaola-ticker-scroll linear infinite;
+  animation-duration: 25s;
+}
+
+/* Tạm dừng chuyển động khi rê chuột để đọc hoặc click */
+.kaola-broadcast-bar:hover .kaola-broadcast-track {
+  animation-play-state: paused;
+}
+
+/* Từng thông báo đơn lẻ trong dòng chạy */
+.kaola-broadcast-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  line-height: 24px;
+}
+
+.kaola-broadcast-item:hover {
+  color: #0284c7;
+  text-decoration: underline;
+}
+
+body.theme-type-dark .kaola-broadcast-item,
+.theme-type-dark .kaola-broadcast-item,
+.theme-night .kaola-broadcast-item,
+.theme-dark .kaola-broadcast-item {
+  color: #cbd5e1;
+}
+
+body.theme-type-dark .kaola-broadcast-item:hover,
+.theme-type-dark .kaola-broadcast-item:hover,
+.theme-night .kaola-broadcast-item:hover,
+.theme-dark .kaola-broadcast-item:hover {
+  color: #38bdf8;
+}
+
+/* Huy hiệu nhỏ của tin (nếu có, hiển thị tinh gọn) */
+.kaola-broadcast-item-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  letter-spacing: 0.2px;
+}
+
+body.theme-type-dark .kaola-broadcast-item-badge,
+.theme-type-dark .kaola-broadcast-item-badge,
+.theme-night .kaola-broadcast-item-badge,
+.theme-dark .kaola-broadcast-item-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+/* Phân cách giữa các tin */
+.kaola-broadcast-sep {
+  display: inline-flex;
+  align-items: center;
+  color: #94a3b8;
+  font-size: 10px;
+  padding: 0 6px;
+  opacity: 0.6;
+  user-select: none;
+}
+
+body.theme-type-dark .kaola-broadcast-sep,
+.theme-type-dark .kaola-broadcast-sep,
+.theme-night .kaola-broadcast-sep,
+.theme-dark .kaola-broadcast-sep {
+  color: #64748b;
+}
+
+/* Keyframe chạy chữ liên tục vô tận (seamless loop) */
+@keyframes kaola-ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho Văn Bản Mẫu Kaola - office.kaola.vn</title>
+  <link rel="icon" href="../kaola_logo.png" type="image/png">
+  <link rel="stylesheet" href="templates.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="tmpl-header">
+    <div class="brand-wrap">
+      <div class="brand-icon">📁</div>
+      <div class="brand-info">
+        <h1>
+          Kho Văn Bản Mẫu Kaola
+          <span class="brand-badge">Tiếng Việt 100%</span>
+        </h1>
+        <p>Chuẩn hóa theo Nghị định 30/2020/NĐ-CP và Nghiệp vụ Doanh nghiệp Việt Nam</p>
+      </div>
+    </div>
+
+    <!-- Search Input -->
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input" placeholder="Tìm theo tên mẫu, định dạng (.docx, .xlsx, .pptx) hoặc từ khóa...">
+    </div>
+
+    <!-- Header Meta Stats -->
+    <div class="header-meta">
+      <div class="stat-chip">
+        <span>✨</span>
+        <span>15+ Mẫu Chuẩn mực</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter Tabs -->
+  <div class="filter-container">
+    <button class="tab-btn active" data-category="all">🌟 Tất cả mẫu</button>
+    <button class="tab-btn" data-category="nd30">📜 Hành chính & Pháp lý (NĐ 30)</button>
+    <button class="tab-btn" data-category="contract">💼 Hợp đồng Doanh nghiệp</button>
+    <button class="tab-btn" data-category="hr">👥 Nhân sự & Cá nhân</button>
+    <button class="tab-btn" data-category="excel">📊 Bảng tính & Kế toán (Excel)</button>
+    <button class="tab-btn" data-category="ppt">📽️ Thuyết trình (PowerPoint)</button>
+  </div>
+
+  <!-- Main Content Grid -->
+  <main class="main-wrapper">
+    <div class="section-info">
+      <span id="template-count" class="section-count">Đang tải danh sách mẫu...</span>
+    </div>
+
+    <div id="template-grid" class="template-grid">
+      <!-- Rendered via templates.js -->
+    </div>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="action-toast" class="toast">
+    Đang mở tài liệu trong Kaola Office...
+  </div>
+
+  <script src="templates.js"></script>
+</body>
+</html>

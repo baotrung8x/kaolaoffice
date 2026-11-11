@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soạn Thảo Văn Bản - Kaola Office</title>
+  <link rel="icon" href="/app/kaola_logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/editor.css">
+  <link rel="stylesheet" href="/app/kaola_account.css">
+</head>
+<body>
+
+  <div class="editor-wrapper">
+    <!-- Topbar -->
+    <header class="editor-topbar">
+      <div class="topbar-left">
+        <a href="/" class="btn-back">
+          <span>&larr;</span>
+          <span>Kaola Office</span>
+        </a>
+
+        <div class="doc-info">
+          <div id="doc-badge-icon" class="doc-badge-icon word">📄</div>
+          <input type="text" id="doc-title-input" class="doc-title-input" value="Tai_lieu_moi.docx" readonly>
+          <div class="save-status">
+            <span>●</span>
+            <span id="save-status-text">Đang kết nối...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Shortcut indicator for Kaola AI -->
+        <button class="btn-ai-copilot" onclick="alert('Trợ lý Kaola AI Copilot được tích hợp sẵn ở thanh công cụ bên phải (Sidebar) của ONLYOFFICE!\n\nHãy bấm vào biểu tượng Kaola AI màu xanh ở mép phải màn hình để kích hoạt.')">
+          <span>⚡</span>
+          <span>Kaola AI Copilot (NĐ 30)</span>
+        </button>
+
+        <!-- Kaola ID -->
+        <div id="kaola-account-widget" class="doc-badge-icon" style="background:#e0f2fe; color:#0369a1; cursor:pointer;" onclick="window.KaolaAccount && window.KaolaAccount.openModal && window.KaolaAccount.openModal()" title="Tài khoản Kaola ID">
+          K
+        </div>
+      </div>
+    </header>
+
+    <!-- ONLYOFFICE Frame Container -->
+    <div class="editor-container">
+      <div id="iframeEditor"></div>
+
+      <!-- Offline / Docker Help Overlay -->
+      <div id="connection-overlay" class="connection-overlay">
+        <div class="connection-card">
+          <div class="connection-icon">🐳</div>
+          <div class="connection-title">Cần Khởi Động ONLYOFFICE Document Server</div>
+          <div class="connection-desc">
+            Trình duyệt chưa thể kết nối tới Document Server tại <strong id="target-server-url">http://localhost:8080</strong>.<br>
+            Để mở trình soạn thảo trên trình duyệt web, vui lòng bật Docker Desktop và chạy lệnh sau trong Terminal:
+          </div>
+
+          <div class="code-box">
+            docker run -i -t -d -p 8080:80 --restart=always onlyoffice/documentserver
+          </div>
+
+          <div style="font-size:0.85rem; color:#64748b; margin-bottom:1.5rem; line-height:1.4;">
+            💡 <em>Ghi chú: Bản ONLYOFFICE Community Edition trên Docker hoàn toàn miễn phí (0đ bản quyền theo giấy phép AGPLv3).</em><br>
+            Nếu bạn đang ở trên máy tính chưa bật Docker, bạn có thể:
+          </div>
+
+          <div class="connection-actions">
+            <a href="/" class="btn-back" style="padding:0.6rem 1.25rem;">&larr; Quay về Trang Chủ</a>
+            <button class="btn-back" style="background:#2563eb; color:#fff; border-color:#2563eb; padding:0.6rem 1.25rem;" onclick="location.reload()">Thử lại kết nối</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/editor.js"></script>
+  <script src="/app/kaola_account.js"></script>
+
+</body>
+</html>

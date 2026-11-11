@@ -1,0 +1,411 @@
+/* Kaola Office - Dynamic Ad Banner & Auto-Update UI Styles */
+/* Định vị chính giữa đáy màn hình, chừa góc phải cho Trợ lý AI */
+
+.kaola-ad-container {
+  position: fixed;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 85%;
+  max-width: 680px;
+  min-width: 480px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: kaola-ad-slide-in 0.35s ease-out;
+}
+
+@keyframes kaola-ad-slide-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.kaola-ad-container.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(30px);
+  pointer-events: none;
+}
+
+
+/* Thẻ banner chính */
+.kaola-ad-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #1a73e8;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+
+/* Phần nội dung bên trái */
+.kaola-ad-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Icon / Logo nhà tài trợ */
+.kaola-ad-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.kaola-ad-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Text info */
+.kaola-ad-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.kaola-ad-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kaola-ad-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #94a3b8;
+  white-space: nowrap;
+}
+
+.kaola-ad-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000000 !important;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.15px;
+}
+
+.kaola-ad-desc {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a !important;
+  margin: 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Phần hành động bên phải */
+.kaola-ad-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Nút CTA chính */
+.kaola-ad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #1a73e8;
+  color: #ffffff !important;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(26, 115, 232, 0.2);
+}
+
+.kaola-ad-btn:hover {
+  background: #1557b0;
+  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Nút đóng banner */
+.kaola-ad-close {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.kaola-ad-close:hover {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+/* Dòng ghi chú nhỏ dưới đáy (Đòn bẩy nâng cấp) */
+.kaola-ad-subbar {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 6px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.kaola-ad-upgrade-link {
+  color: #1a73e8;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kaola-ad-upgrade-link:hover {
+  text-decoration: underline;
+  color: #1557b0;
+}
+
+/* ========================================================
+   THÔNG BÁO CẬP NHẬT PHIÊN BẢN (SETTINGS & BADGE)
+   ======================================================== */
+/* Ẩn hoàn toàn banner nổi lơ lửng để không chiếm chỗ trên màn hình chính */
+.kaola-update-banner {
+  display: none !important;
+}
+
+/* Chấm đỏ thông báo cập nhật trên icon "Cài đặt" ở thanh menu bên trái */
+.kaola-settings-update-dot {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  width: 9px;
+  height: 9px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 8px rgba(239, 68, 68, 0.7);
+  animation: kaola-badge-pulse 2s infinite ease-in-out;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@keyframes kaola-badge-pulse {
+  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Khối thông báo cập nhật bên trong màn hình Cài đặt (Settings View) */
+.kaola-settings-update-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 12px 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  animation: kaola-fade-in 0.25s ease-out;
+}
+
+@keyframes kaola-fade-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kaola-update-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kaola-update-pill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kaola-update-pill {
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+}
+
+.kaola-update-ver {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.kaola-update-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.kaola-update-cur-ver {
+  font-size: 11.5px;
+  color: #94a3b8;
+}
+
+.kaola-update-card-right {
+  flex-shrink: 0;
+}
+
+.kaola-update-dl-btn {
+  background: #2563eb;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+.kaola-update-dl-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+}
+
+/* Ẩn thông báo lỗi dịch vụ cập nhật không chạy trong hộp thoại Về ứng dụng */
+.about-dialog .about-updates {
+  display: none !important;
+}
+
+/* Thông báo Toast */
+.kaola-ad-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  display: none;
+  animation: kaola-ad-fade-in 0.2s ease-out;
+}
+
+@keyframes kaola-ad-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tương thích chế độ Dark Theme */
+body.theme-type-dark .kaola-ad-card {
+  background: #1e293b;
+  border-color: #334155;
+  border-left-color: #3b82f6;
+}
+
+body.theme-type-dark .kaola-ad-icon-box {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.theme-type-dark .kaola-ad-badge {
+  background: #0f172a;
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+body.theme-type-dark .kaola-ad-title {
+  color: #f8fafc;
+}
+
+body.theme-type-dark .kaola-ad-desc {
+  color: #94a3b8;
+}
+
+body.theme-type-dark .kaola-ad-subbar {
+  background: #0f172a;
+  border-top-color: #334155;
+  color: #64748b;
+}
+
+body.theme-type-dark .kaola-ad-upgrade-link {
+  color: #60a5fa;
+}
+
+body.theme-type-dark .kaola-ad-close:hover {
+  color: #f8fafc;
+  background: #334155;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 820px) {
+  .kaola-ad-container {
+    width: 94%;
+    min-width: 0;
+  }
+}
+@media (max-width: 680px) {
+  .kaola-ad-container {
+    left: 12px;
+    right: 12px;
+    transform: none;
+    width: auto;
+    min-width: 0;
+  }
+  .kaola-ad-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .kaola-ad-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+

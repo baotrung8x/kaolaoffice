@@ -1,0 +1,220 @@
+:root {
+  --primary: #2563eb;
+  --word-color: #2b579a;
+  --excel-color: #217346;
+  --slide-color: #d24726;
+  --border-color: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --ai-color: #059669;
+  --ai-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #f1f5f9;
+}
+
+.editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Editor Topbar */
+.editor-topbar {
+  height: 48px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  flex-shrink: 0;
+  z-index: 40;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: #e2e8f0;
+}
+
+.doc-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.doc-badge-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.doc-badge-icon.word { background: #e8eef8; color: var(--word-color); }
+.doc-badge-icon.cell { background: #e6f4ea; color: var(--excel-color); }
+.doc-badge-icon.slide { background: #fcebe6; color: var(--slide-color); }
+
+.doc-title-input {
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  outline: none;
+  color: var(--text-main);
+  background: transparent;
+  min-width: 200px;
+}
+
+.doc-title-input:hover {
+  border-color: #cbd5e1;
+  background: #fff;
+}
+
+.doc-title-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.save-status {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-ai-copilot {
+  background: var(--ai-gradient);
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: opacity 0.2s;
+}
+
+.btn-ai-copilot:hover {
+  opacity: 0.9;
+}
+
+/* Editor Frame Container */
+.editor-container {
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 48px);
+  position: relative;
+  background: #e2e8f0;
+}
+
+#iframeEditor, #iframeEditor iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+/* Offline / Connection Help Banner */
+.connection-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 50;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.connection-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 600px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+}
+
+.connection-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.connection-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.connection-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.code-box {
+  background: #0f172a;
+  color: #38bdf8;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.connection-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}

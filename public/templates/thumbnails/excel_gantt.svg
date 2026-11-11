@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="grad_excel_gantt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow_excel_gantt" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+  <rect width="320" height="200" fill="url(#grad_excel_gantt)" rx="10"/>
+  <rect width="320" height="6" fill="#EA580C" rx="3"/>
+  <rect x="18" y="20" width="284" height="165" fill="#ffffff" rx="8" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow_excel_gantt)"/>
+  <rect x="30" y="34" width="115" height="22" rx="4" fill="#EA580C" fill-opacity="0.12"/>
+  <text x="38" y="49" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="bold" fill="#EA580C">DỰ ÁN GANTT</text>
+  <rect x="30" y="66" width="170" height="5" rx="2.5" fill="#EA580C"/>
+  <rect x="30" y="75" width="110" height="3" rx="1.5" fill="#cbd5e1"/>
+  <text x="30" y="98" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">TIẾN ĐỘ &amp; KẾ HOẠCH DỰ ÁN</text>
+  <text x="30" y="124" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">Theo dõi phân công Task &amp; Deadline</text>
+  <text x="30" y="142" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#475569">Biểu đồ tiến độ hoàn thành %</text>
+
+  <circle cx="270" cy="158" r="16" fill="#EA580C" fill-opacity="0.12"/>
+  <rect x="264" y="152" width="12" height="12" rx="2" fill="#EA580C"/>
+</svg>

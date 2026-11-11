@@ -1,0 +1,46 @@
+================================================================================
+KAOLA OFFICE - GIẤY PHÉP MÃ NGUỒN MỞ & THÔNG TIN BẢN QUYỀN (LICENSE & ATTRIBUTION)
+================================================================================
+
+1. BẢN QUYỀN PHẦN MỀM GỐC (ORIGINAL SOFTWARE ATTRIBUTION)
+--------------------------------------------------------------------------------
+Kaola Office Desktop được phát triển và tối ưu hóa dựa trên nền tảng mã nguồn mở 
+ONLYOFFICE Desktop Editors.
+
+Bản quyền mã nguồn gốc:
+Copyright (c) Ascensio System SIA 2026. All rights reserved.
+Website: https://www.onlyoffice.com
+
+Phần mềm được phát hành theo giấy phép GNU Affero General Public License 
+phiên bản 3 (GNU AGPL v3).
+
+2. ĐIỀU KHOẢN GIẤY PHÉP GNU AGPL v3 (GNU AFFERO GENERAL PUBLIC LICENSE)
+--------------------------------------------------------------------------------
+Phiên bản 3, ngày 19 tháng 11 năm 2007
+Bản quyền (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+
+Mọi người đều được phép sao chép và phân phối các bản sao nguyên văn của tài liệu 
+giấy phép này, nhưng việc thay đổi nó là không được phép.
+
+TÓM TẮT QUYỀN HẠN CỦA BẠN DƯỚI GIẤY PHÉP NÀY:
+- Bạn được toàn quyền sử dụng phần mềm này cho mục đích cá nhân, doanh nghiệp hoặc cơ quan nhà nước hoàn toàn miễn phí.
+- Bạn có quyền nghiên cứu cách thức phần mềm hoạt động và sửa đổi phần mềm theo nhu cầu.
+- Bạn có quyền phân phối lại các bản sao của phần mềm này.
+- Khi phân phối lại các bản sao hoặc sản phẩm phái sinh, bạn phải cung cấp mã nguồn tương ứng theo đúng các điều khoản của GNU AGPL v3.
+
+Toàn văn giấy phép GNU AGPL v3 có thể được tham khảo trực tuyến tại:
+https://www.gnu.org/licenses/agpl-3.0.html
+
+3. THƯƠNG HIỆU & BẢN QUYỀN TÍCH HỢP (TRADEMARK & KAOLA SERVICES)
+--------------------------------------------------------------------------------
+- "Kaola", "Kaola Office" và biểu tượng linh vật Kaola là nhãn hiệu thuộc sở hữu 
+  của Kaola Platform.
+- Các tính năng mở rộng kết nối đám mây (Cloud Services) bao gồm Trợ lý Trí tuệ 
+  Nhân tạo (Kaola AI Copilot), Cổng định danh tập trung (Kaola ID - https://id.kaola.vn), 
+  và Cổng dịch vụ trực tuyến là các dịch vụ SaaS độc lập do Kaola vận hành.
+- Việc sử dụng các dịch vụ đám mây trực tuyến tuân thủ Điều khoản Dịch vụ và 
+  Chính sách Bảo vệ Dữ liệu Cá nhân của Kaola Platform theo quy định của pháp luật Việt Nam.
+
+Mã nguồn mở và các tài liệu hướng dẫn được công khai tại:
+https://id.kaola.vn hoặc https://kaola.vn/opensource
+================================================================================

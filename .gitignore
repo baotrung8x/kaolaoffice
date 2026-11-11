@@ -1,0 +1,25 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Archives & Large packages (>100MB)
+DesktopEditors_x64.zip
+*.zip
+*.tar.gz
+*.dmg
+*.iso
+
+# Large binaries exceeding GitHub 100MB limit
+app/libcef.dll
+
+# Build output
+package/Output/
+package/mac/Output/
+Output/
+/tmp/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+tools/__pycache__/

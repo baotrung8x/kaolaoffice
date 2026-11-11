@@ -1,0 +1,22 @@
+{
+  "name": "Kaola Office",
+  "short_name": "KaolaOffice",
+  "description": "Bộ ứng dụng văn phòng thông minh Việt Nam - Soạn thảo văn bản, bảng tính, trình chiếu và PDF",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#164282",
+  "icons": [
+    {
+      "src": "/kaola-logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kaola_logo.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}

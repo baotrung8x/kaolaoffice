@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaola AI Copilot</title>
+  <link rel="stylesheet" href="css/copilot.css">
+  <script src="../pluginBase.js"></script>
+  <script src="scripts/prompts.js"></script>
+  <script src="scripts/ai_engine.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <div class="copilot-header">
+    <div class="copilot-brand">
+      <span class="copilot-badge">AI</span>
+      <span class="copilot-title">Kaola Copilot</span>
+    </div>
+    <div class="copilot-status-dot" title="Sẵn sàng"></div>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="copilot-nav">
+    <button class="copilot-tab-btn active" data-tab="tab-admin">📜 Soạn thảo</button>
+    <button class="copilot-tab-btn" data-tab="tab-summary">📊 Tóm tắt</button>
+    <button class="copilot-tab-btn" data-tab="tab-grammar">✍️ Sửa lỗi</button>
+    <button class="copilot-tab-btn" data-tab="tab-translate">🌐 Dịch</button>
+    <button class="copilot-tab-btn" data-tab="tab-settings">⚙️</button>
+  </div>
+
+  <div class="copilot-container">
+    <!-- TAB 1: SOẠN THẢO VĂN BẢN HÀNH CHÍNH (NGHỊ ĐỊNH 30) -->
+    <div id="tab-admin" class="copilot-panel active">
+      <div class="copilot-group">
+        <label class="copilot-label">Loại văn bản chuẩn NĐ 30/2020/NĐ-CP:</label>
+        <select id="admin-doc-type" class="copilot-select">
+          <option value="thong_bao">Thông báo (TB)</option>
+          <option value="quyet_dinh">Quyết định (QĐ)</option>
+          <option value="cong_van">Công văn hành chính (CV)</option>
+          <option value="to_trinh">Tờ trình (TTr)</option>
+          <option value="hop_dong">Hợp đồng kinh tế / Dịch vụ</option>
+          <option value="bien_ban">Biên bản cuộc họp / Nghiệm thu</option>
+        </select>
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Cơ quan / Doanh nghiệp ban hành:</label>
+        <input type="text" id="admin-company-name" class="copilot-input" value="" placeholder="Ví dụ: CÔNG TY CỔ PHẦN... (hoặc để trống)" />
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Nội dung yêu cầu soạn thảo:</label>
+        <textarea id="admin-prompt" class="copilot-textarea" placeholder="Ví dụ: Tạo thông báo nghỉ lễ 30/4 - 1/5 kèm lịch trực phòng kinh doanh và IT"></textarea>
+        <div class="copilot-quick-tags">
+          <span class="copilot-tag" onclick="quickFillAdmin('Nghỉ lễ 30/4 - 1/5 kèm lịch trực')">Nghỉ lễ 30/4</span>
+          <span class="copilot-tag" onclick="quickFillAdmin('Bổ nhiệm Trưởng phòng Kinh doanh')">Bổ nhiệm nhân sự</span>
+          <span class="copilot-tag" onclick="quickFillAdmin('Tờ trình phê duyệt kinh phí dự án phần mềm')">Tờ trình kinh phí</span>
+        </div>
+      </div>
+
+      <button id="btn-generate-admin" class="copilot-btn-action">
+        <span>✨ Tạo văn bản chuẩn thể thức</span>
+      </button>
+
+      <div id="admin-output-box" class="copilot-output-card" style="display: none;">
+        <div class="copilot-output-header">
+          <span class="copilot-output-title">KẾT QUẢ VĂN BẢN</span>
+          <div class="copilot-header-actions">
+            <button id="btn-insert-admin-top" class="copilot-btn-mini copilot-btn-insert-mini" title="Chèn vào tài liệu">📋 Chèn</button>
+            <button id="btn-copy-admin-top" class="copilot-btn-mini" title="Sao chép">Sao chép</button>
+          </div>
+        </div>
+        <div id="admin-output-text" class="copilot-output-body"></div>
+        <div class="copilot-output-footer">
+          <button id="btn-insert-admin" class="copilot-btn-secondary copilot-btn-insert">📋 Chèn vào tài liệu</button>
+          <button id="btn-copy-admin" class="copilot-btn-secondary">Sao chép</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: TÓM TẮT BÁO CÁO DÀI -->
+    <div id="tab-summary" class="copilot-panel">
+      <div class="copilot-group">
+        <label class="copilot-label">Chế độ tóm tắt điều hành:</label>
+        <select id="summary-mode" class="copilot-select">
+          <option value="5_points">🎯 5 Điểm mấu chốt (Khuyên dùng cho Sếp)</option>
+          <option value="short">📝 Tóm tắt ngắn gọn (Dưới 150 từ)</option>
+          <option value="executive">📑 Báo cáo điều hành chi tiết (Đầy đủ mục)</option>
+        </select>
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Nội dung cần tóm tắt:</label>
+        <textarea id="summary-input" class="copilot-textarea" placeholder="Bôi đen văn bản trong tài liệu hoặc dán vào đây..."></textarea>
+        <button id="btn-fetch-selection-summary" class="copilot-btn-secondary" style="margin-top: 6px; width: 100%;">📥 Lấy đoạn đang chọn trong tài liệu</button>
+      </div>
+
+      <button id="btn-generate-summary" class="copilot-btn-action">
+        <span>✨ Trích xuất tóm tắt</span>
+      </button>
+
+      <div id="summary-output-box" class="copilot-output-card" style="display: none;">
+        <div class="copilot-output-header">
+          <span class="copilot-output-title">BẢN TÓM TẮT ĐIỀU HÀNH</span>
+          <div class="copilot-header-actions">
+            <button id="btn-insert-summary-top" class="copilot-btn-mini copilot-btn-insert-mini" title="Chèn vào tài liệu">📋 Chèn</button>
+            <button id="btn-copy-summary-top" class="copilot-btn-mini" title="Sao chép">Sao chép</button>
+          </div>
+        </div>
+        <div id="summary-output-text" class="copilot-output-body"></div>
+        <div class="copilot-output-footer">
+          <button id="btn-insert-summary" class="copilot-btn-secondary copilot-btn-insert">📋 Chèn tóm tắt vào tài liệu</button>
+          <button id="btn-copy-summary" class="copilot-btn-secondary">Sao chép</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SỬA LỖI & CHUẨN HÓA VĂN PHONG -->
+    <div id="tab-grammar" class="copilot-panel">
+      <div class="copilot-group">
+        <label class="copilot-label">Mục tiêu hiệu đính:</label>
+        <select id="grammar-mode" class="copilot-select">
+          <option value="spellcheck_auto" selected>✨ Tự động nhận diện Anh/Việt & Sửa chính tả</option>
+          <option value="chinh_ta">🔤 Sửa lỗi chính tả tiếng Việt & gõ Telex</option>
+          <option value="hanh_chinh">🏛️ Chuẩn hóa văn phong hành chính trang trọng</option>
+          <option value="ngan_gon">✂️ Rút gọn câu từ, loại bỏ lặp ý</option>
+        </select>
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Văn bản cần kiểm tra:</label>
+        <textarea id="grammar-input" class="copilot-textarea" placeholder="Bôi đen đoạn văn cần sửa trong tài liệu..."></textarea>
+        <button id="btn-fetch-selection-grammar" class="copilot-btn-secondary" style="margin-top: 6px; width: 100%;">📥 Lấy đoạn đang chọn</button>
+      </div>
+
+      <button id="btn-generate-grammar" class="copilot-btn-action">
+        <span>✨ Hiệu đính & Chuẩn hóa</span>
+      </button>
+
+      <div id="grammar-output-box" class="copilot-output-card" style="display: none;">
+        <div class="copilot-output-header">
+          <span class="copilot-output-title">KẾT QUẢ ĐÃ HIỆU ĐÍNH</span>
+          <div class="copilot-header-actions">
+            <button id="btn-replace-grammar-top" class="copilot-btn-mini copilot-btn-insert-mini" title="Thay thế đoạn đang chọn">🔄 Thay thế</button>
+            <button id="btn-copy-grammar-top" class="copilot-btn-mini" title="Sao chép">Sao chép</button>
+          </div>
+        </div>
+        <div id="grammar-output-text" class="copilot-output-body"></div>
+        <div class="copilot-output-footer">
+          <button id="btn-replace-grammar" class="copilot-btn-secondary copilot-btn-insert">🔄 Thay thế đoạn đang chọn</button>
+          <button id="btn-copy-grammar" class="copilot-btn-secondary">Sao chép</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: DỊCH THUẬT ĐA NGÔN NGỮ -->
+    <div id="tab-translate" class="copilot-panel">
+      <div style="display: flex; gap: 8px;" class="copilot-group">
+        <div style="flex: 1;">
+          <label class="copilot-label">Từ tiếng:</label>
+          <select id="trans-from" class="copilot-select">
+            <option value="Tiếng Anh">Tiếng Anh</option>
+            <option value="Tiếng Việt">Tiếng Việt</option>
+            <option value="Tiếng Nhật">Tiếng Nhật</option>
+            <option value="Tiếng Trung">Tiếng Trung</option>
+            <option value="Tiếng Hàn">Tiếng Hàn</option>
+          </select>
+        </div>
+        <div style="flex: 1;">
+          <label class="copilot-label">Sang tiếng:</label>
+          <select id="trans-to" class="copilot-select">
+            <option value="Tiếng Việt">Tiếng Việt</option>
+            <option value="Tiếng Anh">Tiếng Anh</option>
+            <option value="Tiếng Nhật">Tiếng Nhật</option>
+            <option value="Tiếng Trung">Tiếng Trung</option>
+            <option value="Tiếng Hàn">Tiếng Hàn</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Kiểu trình bày:</label>
+        <select id="trans-mode" class="copilot-select">
+          <option value="bilingual">📖 Song ngữ (Gốc + Dịch bên dưới)</option>
+          <option value="replace">🔄 Dịch thay thế trực tiếp</option>
+        </select>
+      </div>
+
+      <div class="copilot-group">
+        <label class="copilot-label">Nội dung hợp đồng / điều khoản cần dịch:</label>
+        <textarea id="trans-input" class="copilot-textarea" placeholder="Bôi đen điều khoản hợp đồng trong tài liệu..."></textarea>
+      </div>
+
+      <button id="btn-generate-translate" class="copilot-btn-action">
+        <span>✨ Dịch thuật bảo toàn định dạng</span>
+      </button>
+
+      <div id="trans-output-box" class="copilot-output-card" style="display: none;">
+        <div class="copilot-output-header">
+          <span class="copilot-output-title">BẢN DỊCH CHUYÊN NGÀNH</span>
+          <div class="copilot-header-actions">
+            <button id="btn-insert-trans-top" class="copilot-btn-mini copilot-btn-insert-mini" title="Chèn vào tài liệu">📋 Chèn</button>
+            <button id="btn-copy-trans-top" class="copilot-btn-mini" title="Sao chép">Sao chép</button>
+          </div>
+        </div>
+        <div id="trans-output-text" class="copilot-output-body"></div>
+        <div class="copilot-output-footer">
+          <button id="btn-insert-trans" class="copilot-btn-secondary copilot-btn-insert">📋 Chèn bản dịch</button>
+          <button id="btn-copy-trans" class="copilot-btn-secondary">Sao chép</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: CÀI ĐẶT & KẾT NỐI AI -->
+    <div id="tab-settings" class="copilot-panel">
+      <div class="copilot-group">
+        <label class="copilot-label">Nhà cung cấp AI (Provider):</label>
+        <select id="settings-provider" class="copilot-select">
+          <option value="simulation">⚡ Mô phỏng AI tích hợp sẵn (Offline Demo)</option>
+          <option value="gemini">Google Gemini (Gemini 2.5 Flash / Pro)</option>
+          <option value="openai">OpenAI (GPT-4o, GPT-4o-mini)</option>
+          <option value="deepseek">DeepSeek (DeepSeek V3 / R1)</option>
+          <option value="ollama">Local AI Ollama (Máy chủ nội bộ LAN)</option>
+          <option value="kaolawork">Kaolawork Gateway (Hệ thống quản lý)</option>
+        </select>
+      </div>
+
+      <div id="box-api-key" class="copilot-group">
+        <label class="copilot-label">API Key:</label>
+        <input type="password" id="settings-api-key" class="copilot-input" placeholder="Nhập API Key của bạn" />
+        <div class="copilot-sublabel">API Key được lưu an toàn tại máy cục bộ.</div>
+      </div>
+
+      <div id="box-api-url" class="copilot-group" style="display: none;">
+        <label class="copilot-label">Địa chỉ API Server (Endpoint):</label>
+        <input type="text" id="settings-api-url" class="copilot-input" value="http://localhost:11434/v1/chat/completions" />
+      </div>
+
+      <div id="box-model" class="copilot-group">
+        <label class="copilot-label">Model Name:</label>
+        <input type="text" id="settings-model" class="copilot-input" value="gpt-4o-mini" />
+      </div>
+
+      <button id="btn-save-settings" class="copilot-btn-action">
+        <span>💾 Lưu cấu hình AI</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="scripts/copilot.js"></script>
+</body>
+</html>

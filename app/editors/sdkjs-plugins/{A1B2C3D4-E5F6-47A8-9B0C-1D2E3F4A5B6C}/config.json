@@ -1,0 +1,49 @@
+{
+  "name": "Kaola AI Copilot",
+  "nameLocale": {
+    "vi": "Trợ lý AI Kaola",
+    "en": "Kaola AI Copilot"
+  },
+  "guid": "asc.{A1B2C3D4-E5F6-47A8-9B0C-1D2E3F4A5B6C}",
+  "version": "1.0.0",
+  "minVersion": "8.0.0",
+  "variations": [
+    {
+      "description": "Trợ lý AI Doanh nghiệp: Soạn thảo văn bản chuẩn NĐ 30, Tóm tắt báo cáo, Chuẩn hóa văn phong & Dịch thuật đa ngôn ngữ.",
+      "descriptionLocale": {
+        "vi": "Trợ lý AI Doanh nghiệp: Soạn thảo văn bản chuẩn NĐ 30, Tóm tắt báo cáo, Chuẩn hóa văn phong & Dịch thuật đa ngôn ngữ.",
+        "en": "Enterprise AI Copilot: Vietnamese standard document creation, report summarization, grammar/style correction and translation."
+      },
+      "url": "index.html",
+      "icons": [
+        "resources/img/icon.png",
+        "resources/img/icon@2x.png"
+      ],
+      "icons2": [
+        {
+          "100%": {
+            "normal": "resources/img/icon.png"
+          },
+          "200%": {
+            "normal": "resources/img/icon@2x.png"
+          }
+        }
+      ],
+      "isViewer": true,
+      "EditorsSupport": [
+        "word",
+        "cell",
+        "slide",
+        "pdf"
+      ],
+      "type": "panelRight",
+      "isVisual": true,
+      "isModal": false,
+      "isInsideMode": true,
+      "initDataType": "text",
+      "isUpdateOleOnResize": false,
+      "initOnSelectionChanged": true
+    }
+  ],
+  "onlyofficeScheme": false
+}

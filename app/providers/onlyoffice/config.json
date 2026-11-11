@@ -1,0 +1,18 @@
+{
+    "provider": "onlyoffice",
+    "name": "Kaola Drive",
+    "editorPage": "regex:(/products/files/doceditor.aspx)|(/doceditor)",
+    "startPage": "https://drive.kaola.vn",
+    "cryptoSupport": "true",
+    "icons": {
+        "themeLight": {
+            "connectionsList": "./assets/listicon.svg",
+            "buttonLogo": "./assets/buttonlogo.svg"
+        },
+        "themeDark": {
+            "connectionsList": "./assets/listicon_dark.svg",
+            "buttonLogo": "./assets/buttonlogo_dark.svg"
+        }
+    },
+    "entryPage": "https://drive.kaola.vn"
+}
