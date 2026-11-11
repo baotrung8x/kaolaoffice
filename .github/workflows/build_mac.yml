@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   build-macos:
-    runs-on: macos-14 # Chạy trên runner Apple Silicon (M1/M2) của GitHub Actions
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,7 +44,11 @@ jobs:
         run: |
           chmod +x package/mac/build_mac.sh
           chmod +x package/mac/fix_gatekeeper.command
-          ./package/mac/build_mac.sh ${{ inputs.arch || 'all' }}
+          ARCH="${{ inputs.arch }}"
+          if [ -z "$ARCH" ]; then
+            ARCH="all"
+          fi
+          ./package/mac/build_mac.sh "$ARCH"
 
       - name: Upload DMG Artifacts
         uses: actions/upload-artifact@v4
