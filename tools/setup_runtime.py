@@ -44,29 +44,34 @@ def download_file(url, target_path):
 
     print(f"Download complete: {target_path}")
 
-def extract_zip(zip_path, target_dir):
-    print(f"Extracting {zip_path} to {target_dir}...")
+def extract_missing(zip_path, target_dir):
+    print(f"Extracting missing files from {zip_path} to {target_dir}...")
     os.makedirs(target_dir, exist_ok=True)
     with zipfile.ZipFile(zip_path, 'r') as zf:
-        members = zf.namelist()
-        total = len(members)
-        print(f"Total files in archive: {total}")
-        zf.extractall(target_dir)
-    print("Extraction completed successfully!")
+        extracted_count = 0
+        for member in zf.namelist():
+            target_path = os.path.join(target_dir, member)
+            if not os.path.exists(target_path):
+                zf.extract(member, target_dir)
+                extracted_count += 1
+                if extracted_count <= 10 or member.endswith('.dll') or member.endswith('.exe'):
+                    print(f"  Extracted missing: {member}")
+        print(f"Successfully extracted {extracted_count} missing files.")
 
 def main():
     print(f"Base Directory: {BASE_DIR}")
     print(f"Target App Directory: {TARGET_DIR}")
 
-    if not os.path.exists(DOWNLOAD_CACHE):
-        download_file(RUNTIME_URL, DOWNLOAD_CACHE)
+    libcef_path = os.path.join(TARGET_DIR, "libcef.dll")
+    if not os.path.exists(libcef_path):
+        print(f"[INFO] libcef.dll is missing. Preparing to download runtime...")
+        if not os.path.exists(DOWNLOAD_CACHE):
+            download_file(RUNTIME_URL, DOWNLOAD_CACHE)
+        else:
+            print(f"Using existing archive: {DOWNLOAD_CACHE}")
+        extract_missing(DOWNLOAD_CACHE, TARGET_DIR)
     else:
-        print(f"Using existing archive: {DOWNLOAD_CACHE}")
-
-    if not os.path.exists(os.path.join(TARGET_DIR, "DesktopEditors.exe")):
-        extract_zip(DOWNLOAD_CACHE, TARGET_DIR)
-    else:
-        print(f"Runtime is already extracted in {TARGET_DIR}")
+        print(f"[OK] Runtime (libcef.dll) is already present in {TARGET_DIR}")
 
     print("\n--- Runtime Setup Finished ---")
 

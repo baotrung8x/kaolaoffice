@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  const APP_CURRENT_VERSION = '2.0.0';
+  const APP_CURRENT_VERSION = '2.0.1';
   const API_ENDPOINTS = [
     'https://work.kaola.vn/api/v1/office/init',
     'https://kaola.vn/api/v1/office/init',

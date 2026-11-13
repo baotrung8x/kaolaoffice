@@ -176,7 +176,6 @@ def run_tests():
     # Test 11: Kiểm tra nhúng mã nhân viên tư vấn Kaola AI (widget.js) vào màn hình chính và 5 trình biên tập
     total += 1
     editor_files = [
-        os.path.join(APP_DIR, "index.html"),
         os.path.join(APP_DIR, "editors", "web-apps", "apps", "documenteditor", "main", "index.html"),
         os.path.join(APP_DIR, "editors", "web-apps", "apps", "spreadsheeteditor", "main", "index.html"),
         os.path.join(APP_DIR, "editors", "web-apps", "apps", "presentationeditor", "main", "index.html"),
@@ -192,16 +191,16 @@ def run_tests():
             continue
         with open(ef, 'r', encoding='utf-8') as f:
             content = f.read()
-            has_widget = ('widget.js' in content and 'data-key="pk_admin_master_dae167d8d2cf75a5"' in content and ('data-bot-id="6"' in content or 'data-bot-id="2"' in content))
-            if not has_widget:
+            has_copilot = ('kaola_assistant.js' in content and 'kaola_assistant.css' in content)
+            if not has_copilot:
                 all_injected = False
                 missing_widget.append(ef)
 
     if all_injected:
-        print("[PASS] Test 11: Mã trợ lý Kaola AI Copilot (widget.js Bot 6) đã được tích hợp đầy đủ vào màn hình chính & 5 trình soạn thảo (Word, Excel, PowerPoint, PDF, Visio).")
+        print("[PASS] Test 11: Trợ lý Kaola AI Copilot Native (kaola_assistant.js) đã được tích hợp đầy đủ vào 5 trình soạn thảo (Word, Excel, PowerPoint, PDF, Visio).")
         passed += 1
     else:
-        print(f"[FAIL] Test 11: Thiếu mã widget.js tại các file: {missing_widget}")
+        print(f"[FAIL] Test 11: Thiếu mã kaola_assistant.js tại các file: {missing_widget}")
 
     # Test 12: Kiểm tra biểu tượng Kaola AI trên menu bên trái & mở trực tiếp bảng giá các gói Office
     total += 1

@@ -1,6 +1,6 @@
 ; Script generated for Inno Setup - Kaola Office
 #define MyAppName "Kaola Office"
-#define MyAppVersion "2.0.0"
+#define MyAppVersion "2.0.1"
 #define MyAppPublisher "Kaola"
 #define MyAppURL "https://id.kaola.vn"
 #define MyAppExeName "KaolaOffice.exe"
